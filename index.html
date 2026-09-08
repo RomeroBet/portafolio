@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Betsy Mabel Romero | AI Video Editor & Postproduction</title>
+    <title>BETSY ROMERO | Editora de Contenido Audiovisual con IA</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #ffffff;
-            --card-bg: #f9fafb;
-            --card-border: #e5e7eb;
-            --text-primary: #111827;
-            --text-secondary: #4b5563;
-            /* Si prefieres el celeste calipso, cambia #7c3aed por #0284c7 */
-            --accent-color: #7c3aed; 
-            --accent-light: rgba(124, 58, 237, 0.08);
-            --tag-bg: #f3f4f6;
+            --card-bg: #f8fafc;
+            --card-border: #e2e8f0;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-color: #1e293b;
+            --accent-light: rgba(30, 41, 59, 0.06);
+            --chip-bg: #ffffff;
+            --chip-border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
@@ -29,53 +33,54 @@
         }
 
         .container {
-            max-width: 820px;
+            max-width: 840px;
             width: 100%;
         }
 
-        /* HEADER CON FOTO DE PERFIL */
+        /* HEADER */
         header {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 36px 20px;
+            padding: 40px 24px;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 16px;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
 
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-color);
             box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
 
         h1 {
-            font-size: 2.1rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            margin: 0 0 6px 0;
+            margin: 0 0 8px 0;
             color: var(--text-primary);
             letter-spacing: -0.02em;
         }
 
         .subtitle {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: var(--accent-color);
             font-weight: 600;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
+            line-height: 1.4;
         }
 
         .location-contact {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             display: flex;
-            gap: 16px;
+            gap: 18px;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
@@ -90,30 +95,86 @@
 
         .location-contact a:hover {
             color: var(--accent-color);
+            text-decoration: underline;
         }
 
-        /* SECCIÓN CV / SOBRE MÍ */
+        /* CV SECCIONES */
         .cv-section {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 32px;
+            padding: 30px;
+            margin-bottom: 28px;
         }
 
         .cv-section h2 {
-            font-size: 1.15rem;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 700;
             margin-top: 0;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             color: var(--text-primary);
+            border-bottom: 2px solid var(--card-border);
+            padding-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
 
         .cv-section p {
             color: var(--text-secondary);
+            font-size: 0.94rem;
+            line-height: 1.65;
+            margin: 0 0 16px 0;
+        }
+
+        .cv-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* LISTAS Y EXPERIENCIA */
+        .exp-item {
+            margin-bottom: 24px;
+        }
+
+        .exp-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .exp-date {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        ul.cv-list {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--text-secondary);
             font-size: 0.92rem;
             line-height: 1.6;
-            margin: 0 0 20px 0;
+        }
+
+        ul.cv-list li {
+            margin-bottom: 8px;
+        }
+
+        /* GRID DE SKILLS / HERRAMIENTAS */
+        .tools-group {
+            margin-bottom: 18px;
+        }
+
+        .tools-group h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 8px 0;
         }
 
         .skills-grid {
@@ -123,23 +184,24 @@
         }
 
         .skill-chip {
-            background-color: var(--bg-color);
+            background-color: var(--chip-bg);
             color: var(--text-primary);
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--chip-border);
             padding: 6px 14px;
             border-radius: 8px;
-            font-size: 0.82rem;
+            font-size: 0.84rem;
             font-weight: 500;
         }
 
+        /* SECCIÓN SHOWCASE / VÍDEOS */
         .section-title {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--text-primary);
             margin: 40px 0 20px 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             letter-spacing: -0.01em;
         }
 
@@ -147,7 +209,7 @@
             content: '';
             display: inline-block;
             width: 4px;
-            height: 20px;
+            height: 22px;
             background-color: var(--accent-color);
             border-radius: 2px;
         }
@@ -177,7 +239,7 @@
 
         .card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
         }
 
         .card h3 {
@@ -216,6 +278,35 @@
             border: 0;
         }
 
+        .linkedin-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 16px;
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            text-align: center;
+            gap: 12px;
+        }
+
+        .btn-linkedin {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .btn-linkedin:hover {
+            opacity: 0.9;
+        }
+
         .tag {
             display: inline-block;
             background-color: var(--accent-light);
@@ -238,39 +329,34 @@
 <body>
 
 <div class="container">
+
+    <!-- HEADER / DATOS DE CONTACTO -->
     <header>
-        <img src="IMG_0149.jpeg" alt="Betsy Mabel Romero" class="profile-img">
-        <h1>Betsy Mabel Romero</h1>
-        <div class="subtitle">AI Video Editor & Audiovisual Specialist</div>
+        <img src="IMG_0149.jpeg" alt="BETSY ROMERO" class="profile-img">
+        <h1>BETSY ROMERO</h1>
+        <div class="subtitle">Editora de Contenido Audiovisual con IA | Creadora de Vídeos Generativos | Multimedia & Marketing Digital</div>
         <div class="location-contact">
             <span>📍 Madrid, España</span>
             <span>✉️ <a href="mailto:bet.romero@hotmail.com">bet.romero@hotmail.com</a></span>
         </div>
     </header>
 
-    <!-- SECCIÓN CV / SOBRE MÍ -->
+    <!-- PERFIL PROFESIONAL -->
     <div class="cv-section">
         <h2>Perfil Profesional</h2>
-        <p>Especialista en edición de vídeo e integración de Inteligencia Artificial generativa para la producción audiovisual. Combinando técnicas tradicionales de montaje y postproducción con workflows avanzados de IA (generación de imagen a vídeo, animación sintética, síntesis de voz y composición cinematográfica), transformo conceptos en piezas comerciales, spots publicitarios y contenido narrativo de alto impacto.</p>
-        
-        <div class="skills-grid">
-            <span class="skill-chip">Edición de Vídeo (Premiere Pro / DaVinci)</span>
-            <span class="skill-chip">Generación de Vídeo IA (Runway / Pika / Sora)</span>
-            <span class="skill-chip">ComfyUI & Workflows Custom</span>
-            <span class="skill-chip">Síntesis de Voz & Audio (ElevenLabs)</span>
-            <span class="skill-chip">Postproducción & Color Grading</span>
-            <span class="skill-chip">Formatos 16:9 & 9:16 (Shorts/Reels)</span>
-        </div>
+        <p>Editora audiovisual especializada en la creación de contenido digital utilizando herramientas de Inteligencia Artificial generativa para imagen, vídeo y storytelling visual. Experiencia desarrollando piezas audiovisuales con IA para proyectos artísticos, comerciales y educativos, combinando creatividad, edición de vídeo y dirección visual.</p>
+        <p>Capacidad para transformar conceptos e ideas en vídeos atractivos mediante generación de imágenes, animación, edición, montaje y adaptación de contenidos para diferentes formatos digitales.</p>
+        <p>Perfil híbrido entre creatividad audiovisual, comunicación y visión de negocio, con experiencia en proyectos de marketing, contenidos digitales y producción multimedia.</p>
     </div>
 
-    <!-- PROYECTOS HORIZONTALES (16:9) -->
+    <!-- MUESTRA DE PROYECTOS AUDIOVISUALES (SHOWCASE) -->
     <div class="section-title">Spots & Producción Audiovisual (16:9)</div>
     <div class="grid">
         <!-- ILS Design -->
         <div class="card">
             <div>
-                <h3>ILS Design — Calefacción & Diseño</h3>
-                <p>Propuesta audiovisual de presentación de marca para firma italiana de diseño y calefacción. Generación de entornos sintéticos y ritmo narrativo comercial.</p>
+                <h3>ILS Company — Calefacción & Diseño</h3>
+                <p>Creación de vídeo promocional para producto industrial utilizando herramientas de Inteligencia Artificial. Desarrollo de imágenes y escenas generativas orientadas a comunicación comercial.</p>
                 <span class="tag">Commercial / AI Scene Generation</span>
             </div>
             <div class="video-container">
@@ -278,51 +364,50 @@
             </div>
         </div>
 
-        <!-- Veleros / Cinematic AI -->
+        <!-- Clipedia Vol. 1 -->
         <div class="card">
             <div>
-                <h3>Veleros / Cinematic AI</h3>
-                <p>Generación de escenas hiperrealistas marítimas y composición cinematográfica con IA generativa y edición narrativa de alta gama.</p>
-                <span class="tag">Cinematic AI / Editing</span>
+                <h3>Clipedia — Showcase 16:9</h3>
+                <p>Presentación audiovisual en formato panorámico para síntesis de contenido y aprendizaje visual con IA.</p>
+                <span class="tag">Edición Audiovisual / Storytelling</span>
             </div>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/UEPEyhmOyfM" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/z_zRBsvUmIU" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
-    <!-- PROYECTOS VERTICALES / SHORTS (9:16) -->
     <div class="section-title">Campañas Cortas & Redes (Vertical 9:16)</div>
     <div class="grid">
-        <!-- Scopio -->
-        <div class="card">
-            <div>
-                <h3>Scopio — Promocional Tech</h3>
-                <p>Contenido vertical dinámico orientado a plataforma tecnológica, combinando rápida narrativa visual y elementos IA.</p>
-                <span class="tag">Tech Promo / AI Ads</span>
-            </div>
-            <div class="video-container short">
-                <iframe src="https://www.youtube.com/embed/2MYdPl4z9qA" allowfullscreen></iframe>
-            </div>
-        </div>
-
         <!-- Artist 360 -->
         <div class="card">
             <div>
-                <h3>Artist 360 — Feria de Arte</h3>
-                <p>Pieza publicitaria para la llamada a la feria de arte contemporáneo (Madrid, 2026).</p>
-                <span class="tag">Event Promo / Shorts</span>
+                <h3>Artist 360 — Galería de Arte (Madrid)</h3>
+                <p>Creación de un vídeo artístico utilizando escenas generadas con IA. Desarrollo del concepto visual, generación de imágenes, selección de escenas y montaje audiovisual.</p>
+                <span class="tag">Event Promo / Art & AI</span>
             </div>
             <div class="video-container short">
                 <iframe src="https://www.youtube.com/embed/dLkzrQe_AQE" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- Clipedia 1 -->
+        <!-- Kabbalah Mashiah -->
+        <div class="card">
+            <div>
+                <h3>Kabbalah Mashiah</h3>
+                <p>Producción y montaje de contenido vertical dinámico con elementos visuales sintéticos.</p>
+                <span class="tag">Creative Video / Shorts</span>
+            </div>
+            <div class="video-container short">
+                <iframe src="https://www.youtube.com/embed/DI3OohAVt_Y" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Clipedia Vol. 2 -->
         <div class="card">
             <div>
                 <h3>Clipedia — Promocional Vol. 1</h3>
-                <p>Spot dinámico enfocado en captar atención en redes sociales con síntesis visual acelerada.</p>
+                <p>Spot vertical enfocado en alto dinamismo visual y retención de audiencia para redes sociales.</p>
                 <span class="tag">Social Ads / Engagement</span>
             </div>
             <div class="video-container short">
@@ -330,15 +415,30 @@
             </div>
         </div>
 
-        <!-- Clipedia 2 -->
+        <!-- Clipedia Vol. 3 -->
         <div class="card">
             <div>
                 <h3>Clipedia — Promocional Vol. 2</h3>
-                <p>Variación creativa centrada en narrativa ágil y ritmo de edición para público joven.</p>
+                <p>Variación creativa orientada a narrativa visual ágil mediante herramientas generativas de vídeo.</p>
                 <span class="tag">Social Ads / AI Content</span>
             </div>
             <div class="video-container short">
                 <iframe src="https://www.youtube.com/embed/oopU_ZzGgNY" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Scopio Labs -->
+        <div class="card">
+            <div>
+                <h3>Scopio Labs — Publicación Tech</h3>
+                <p>Proyecto publicitario y showcase publicado en la red profesional LinkedIn.</p>
+                <span class="tag">Tech Promo / LinkedIn</span>
+            </div>
+            <div class="linkedin-box">
+                <p style="margin:0; font-size: 0.85rem; color: var(--text-secondary);">Ver la publicación directamente en LinkedIn:</p>
+                <a href="https://lnkd.in/p/e2Cc-wpe" target="_blank" rel="noopener noreferrer" class="btn-linkedin">
+                    Ver proyecto en LinkedIn ↗
+                </a>
             </div>
         </div>
 
@@ -349,6 +449,150 @@
             <span class="tag">Próximamente / En proceso</span>
         </div>
     </div>
+
+    <!-- EXPERIENCIA DESTACADA -->
+    <div class="cv-section" style="margin-top: 36px;">
+        <h2>Experiencia Destacada</h2>
+        
+        <div class="exp-item">
+            <div class="exp-title">Editora de Contenido Audiovisual IA | Proyectos Freelance</div>
+            <div class="exp-date">2024 – Actualidad</div>
+            <ul class="cv-list">
+                <li>Creación de vídeos generados mediante Inteligencia Artificial a partir de conceptos creativos, guiones visuales y referencias artísticas.</li>
+                <li>Desarrollo de piezas audiovisuales combinando generación de imágenes IA, animación, edición y postproducción.</li>
+                <li>Creación de contenido visual para proyectos culturales, artísticos y empresariales.</li>
+                <li>Experimentación y aplicación de diferentes modelos de IA generativa para obtener resultados visuales de alta calidad.</li>
+            </ul>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-title">Proyecto educativo audiovisual — Artista de acuarela</div>
+            <ul class="cv-list">
+                <li>Edición de vídeo tutorial y adaptación del contenido para una presentación digital profesional.</li>
+                <li>Organización narrativa, montaje, cortes y mejora de la experiencia visual.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- HERRAMIENTAS DE INTELIGENCIA ARTIFICIAL -->
+    <div class="cv-section">
+        <h2>Herramientas de Inteligencia Artificial</h2>
+        
+        <div class="tools-group">
+            <h3>Generación de imágenes y contenido visual:</h3>
+            <div class="skills-grid">
+                <span class="skill-chip">ChatGPT (prompts & guion)</span>
+                <span class="skill-chip">Gemini</span>
+                <span class="skill-chip">Grok</span>
+                <span class="skill-chip">Meta AI</span>
+                <span class="skill-chip">SuperClip AI</span>
+                <span class="skill-chip">ComfyUI</span>
+                <span class="skill-chip">Claude</span>
+                <span class="skill-chip">Nano Banana</span>
+            </div>
+        </div>
+
+        <div class="tools-group" style="margin-top: 16px;">
+            <h3>Generación y edición audiovisual:</h3>
+            <div class="skills-grid">
+                <span class="skill-chip">Runway</span>
+                <span class="skill-chip">SuperClip AI</span>
+                <span class="skill-chip">CapCut</span>
+                <span class="skill-chip">InShot</span>
+                <span class="skill-chip">Final Cut Pro</span>
+            </div>
+        </div>
+
+        <div class="tools-group" style="margin-top: 16px;">
+            <h3>Experiencia creando prompts para:</h3>
+            <div class="skills-grid">
+                <span class="skill-chip">Desarrollo de personajes y escenarios</span>
+                <span class="skill-chip">Imágenes hiperrealistas</span>
+                <span class="skill-chip">Secuencias visuales</span>
+                <span class="skill-chip">Transformación de ideas a audiovisual</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPETENCIAS AUDIOVISUALES -->
+    <div class="cv-section">
+        <h2>Competencias Audiovisuales</h2>
+        <div class="skills-grid">
+            <span class="skill-chip">Edición y montaje de vídeo</span>
+            <span class="skill-chip">Creación de contenido con IA generativa</span>
+            <span class="skill-chip">Desarrollo de conceptos visuales</span>
+            <span class="skill-chip">Storytelling audiovisual</span>
+            <span class="skill-chip">Creación de prompts generativos</span>
+            <span class="skill-chip">Adaptación para RRSS y formatos digitales</span>
+            <span class="skill-chip">Dirección creativa y estilos visuales</span>
+            <span class="skill-chip">Postproducción y optimización de vídeo</span>
+        </div>
+    </div>
+
+    <!-- EXPERIENCIA COMPLEMENTARIA -->
+    <div class="cv-section">
+        <h2>Experiencia Complementaria</h2>
+        
+        <div class="exp-item">
+            <div class="exp-title">Analista Control de Gestión — CGE S.A.</div>
+            <ul class="cv-list">
+                <li>Análisis y depuración de bases de datos.</li>
+                <li>Control de información para procesos de auditoría.</li>
+                <li>Manejo de SAP para gestión y revisión de información.</li>
+                <li>Elaboración de reportes y análisis de datos.</li>
+            </ul>
+        </div>
+
+        <div class="exp-item" style="margin-top: 18px;">
+            <div class="exp-title">Gestión Comercial y Marketing Digital</div>
+            <ul class="cv-list">
+                <li>Creación de materiales comerciales y desarrollo de contenido visual para empresas.</li>
+                <li>Gestión de proyectos digitales y comunicación con clientes y equipos.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FORMACIÓN E IDIOMAS -->
+    <div class="cv-section">
+        <h2>Formación e Idiomas</h2>
+        
+        <div class="exp-item">
+            <div class="exp-title">Formación Académica</div>
+            <ul class="cv-list">
+                <li><strong>Ingeniera Comercial:</strong> Especialización en gestión, negocios y análisis estratégico.</li>
+                <li><strong>Licenciada en Economía</strong></li>
+                <li><strong>Técnico en Comercio Exterior:</strong> Instituto Duoc UC.</li>
+            </ul>
+        </div>
+
+        <div class="exp-item" style="margin-top: 18px;">
+            <div class="exp-title">Formación Complementaria</div>
+            <div class="skills-grid" style="margin-top: 8px;">
+                <span class="skill-chip">Fotografía</span>
+                <span class="skill-chip">Edición audiovisual</span>
+                <span class="skill-chip">Cámara HD</span>
+                <span class="skill-chip">Final Cut Pro</span>
+                <span class="skill-chip">Marketing Digital</span>
+                <span class="skill-chip">GIS — U. Politécnica de Madrid</span>
+            </div>
+        </div>
+
+        <div class="exp-item" style="margin-top: 20px;">
+            <div class="exp-title">Idiomas</div>
+            <ul class="cv-list">
+                <li><strong>Español:</strong> Nativo</li>
+                <li><strong>Inglés:</strong> Intermedio (B1)</li>
+                <li><strong>Italiano:</strong> En aprendizaje</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- VALOR DIFERENCIAL -->
+    <div class="cv-section">
+        <h2>Valor Diferencial</h2>
+        <p>Profesional con combinación de creatividad audiovisual, herramientas de Inteligencia Artificial y visión empresarial. Capacidad para comprender objetivos de comunicación y convertirlos en piezas visuales innovadoras utilizando nuevas tecnologías generativas.</p>
+    </div>
+
 </div>
 
 </body>
