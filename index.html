@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Betsy Mabel Romero — AI Video Editor & Content Creator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181b24;
+    --border: #2a2f42;
+    --accent-indigo: #6366f1;
+    --accent-purple: #a855f7;
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 1020px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+
+  header {
+    background: linear-gradient(135deg, #181b24 0%, #1e1b2e 100%);
+    padding: 40px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .profile-img {
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-indigo);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+  }
+
+  .header-info h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    letter-spacing: -0.5px;
+    color: #fff;
+  }
+
+  .header-info .tagline {
+    font-size: 15px;
+    font-weight: 500;
+    background: linear-gradient(90deg, var(--accent-indigo), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 4px;
+  }
+
+  .contact-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+  }
+
+  aside {
+    background: #13151c;
+    border-right: 1px solid var(--border);
+    padding: 32px 24px;
+  }
+
+  main {
+    padding: 32px 36px;
+  }
+
+  .section-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-indigo);
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+
+  .chip-group { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+  .chip {
+    background: #1e2230;
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .chip.featured {
+    border-color: var(--accent-indigo);
+    color: #fff;
+    background: rgba(99, 102, 241, 0.15);
+  }
+
+  .education-item, .aside-box { margin-bottom: 18px; font-size: 13px; color: var(--text-secondary); }
+  .education-item strong { display: block; color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; }
+
+  .card {
+    background: #1c202c;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+
+  .card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .card-client {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent-purple);
+  }
+
+  .card-date {
+    font-size: 11px;
+    background: rgba(168, 85, 247, 0.15);
+    color: var(--accent-purple);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+
+  /* ── CONTENEDORES DE VÍDEO ── */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 177.77%; /* Ratio 9:16 para Shorts */
+    height: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--border);
+  }
+
+  .video-container.landscape {
+    padding-bottom: 56.25%; /* Ratio 16:9 para formato horizontal */
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .external-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(99, 102, 241, 0.15);
+    color: #fff;
+    border: 1px solid var(--accent-indigo);
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+
+  .external-btn:hover {
+    background: var(--accent-indigo);
+  }
+
+  .placeholder-box {
+    background: #13151c;
+    border: 1px dashed var(--border);
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    header { flex-direction: column; text-align: center; }
+    .contact-bar { justify-content: center; }
+    .grid { grid-template-columns: 1fr; }
+    aside { border-right: none; border-bottom: 1px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <img src="foto.jpg" alt="Betsy Mabel Romero" class="profile-img">
+    <div class="header-info">
+      <h1>Betsy Mabel Romero</h1>
+      <div class="tagline">Editora de Vídeo con IA · Generación de Escenas & Postproducción</div>
+      <div class="contact-bar">
+        <span>📍 Madrid, España</span>
+        <span>✉️ bet.romero@hotmail.com</span>
+        <span>📞 (34) 626 268 876</span>
+        <span>💬 WA: (56) 993 490 228</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="grid">
+    <aside>
+      <div class="section-label">IA Generativa (Vídeo & Imagen)</div>
+      <div class="chip-group">
+        <span class="chip featured">Kling</span>
+        <span class="chip featured">SuperClip AI</span>
+        <span class="chip featured">ComfyUI</span>
+        <span class="chip featured">Grok</span>
+        <span class="chip featured">Meta AI</span>
+        <span class="chip">ChatGPT</span>
+        <span class="chip">Claude</span>
+        <span class="chip">Gemini</span>
+      </div>
+
+      <div class="section-label">Edición & Postproducción</div>
+      <div class="chip-group">
+        <span class="chip featured">Final Cut Pro</span>
+        <span class="chip featured">CapCut</span>
+        <span class="chip">InShot</span>
+        <span class="chip">Montaje Narrativo</span>
+        <span class="chip">Prompt Engineering</span>
+      </div>
+
+      <div class="section-label">Formación Especializada</div>
+      <div class="education-item">
+        <strong>Especialización en IA</strong>
+        Escuela Online Revolutia · 2026 – Presente
+      </div>
+      <div class="education-item">
+        <strong>Ingeniería Comercial</strong>
+        Univ. de Santiago de Chile (2015–2020)
+      </div>
+      <div class="education-item">
+        <strong>Licenciatura en Economía</strong>
+        Univ. de Santiago de Chile (2015–2020)
+      </div>
+      <div class="education-item">
+        <strong>Técnico en Comercio Exterior</strong>
+        Instituto Duoc UC (2012–2014)
+      </div>
+      <div class="education-item">
+        <strong>Comunicación Audiovisual</strong>
+        UNIACC (2011)
+      </div>
+
+      <div class="section-label">Idiomas</div>
+      <div class="aside-box">
+        <strong>Español:</strong> Nativo<br>
+        <strong>Inglés:</strong> B1 (En curso)
+      </div>
+    </aside>
+
+    <main>
+      <div class="section-label">Perfil Profesional</div>
+      <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 24px;">
+        Editora de vídeo especializada en la creación de escenas e integración de Inteligencia Artificial generativa para proyectos audiovisuales de mediana complejidad. Cuento con experiencia en edición narrativa, postproducción y generación visual con herramientas como Kling, SuperClip AI, ComfyUI, Grok y Meta AI, combinadas con Final Cut Pro y CapCut. Perfil híbrido que une creatividad visual, capacidad técnica de prompting y una sólida formación estratégica en comunicación e ingeniería.
+      </p>
+
+      <div class="section-label">Proyectos Audiovisuales & Muestras</div>
+
+      <!-- PROYECTO ARTIST 360 -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Creación & Edición de Escenas con IA</div>
+            <div class="card-client">Artist 360 — Galería de Arte (Madrid)</div>
+          </div>
+          <div class="card-date">2026</div>
+        </div>
+        <div class="card-desc">
+          Desarrollo audiovisual completo para pieza artística. Creación de escenas generadas mediante IA, selección de tomas, montaje de secuencias y edición narrativa adaptada a la identidad visual de la galería.
+        </div>
+        <div class="video-grid" style="max-width: 280px;">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/dLkzrQe_AQE" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROYECTO CLIPEDIA -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Creación & Edición Audiovisual</div>
+            <div class="card-client">Clipedia — Empresa Audiovisual</div>
+          </div>
+          <div class="card-date">2025 – Presente</div>
+        </div>
+        <div class="card-desc">
+          Elaboración de vídeos promocionales y de contenido digital, combinando técnicas de edición tradicional con generación de apoyo mediante herramientas generativas de IA.
+        </div>
+        
+        <!-- Vídeo Horizontal -->
+        <div class="video-container landscape" style="margin-bottom: 12px;">
+          <iframe src="https://www.youtube.com/embed/z_zRBsvUmIU" allowfullscreen></iframe>
+        </div>
+
+        <!-- Shorts Verticales -->
+        <div class="video-grid">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/2MYdPl4z9qA" allowfullscreen></iframe>
+          </div>
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/oopU_ZzGgNY" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROYECTO KABBALAH MASHIAH -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Edición & Creación de Vídeo</div>
+            <div class="card-client">Kabbalah Mashiah</div>
+          </div>
+          <div class="card-date">2026</div>
+        </div>
+        <div class="card-desc">
+          Edición, montaje y producción de contenidos audiovisuales internos en modalidad de subcontratación y trabajo colaborativo de proyectos digitales.
+        </div>
+        <div class="video-grid" style="max-width: 280px;">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/DI3OohAVt_Y" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROYECTO SCOPIO LABS -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Producción de Vídeo & Generación Visual</div>
+            <div class="card-client">Scopio Labs — Tecnología Médica</div>
+          </div>
+          <div class="card-date">2026</div>
+        </div>
+        <div class="card-desc">
+          Colaboración en la edición de piezas audiovisuales corporativas e integración de escenas generadas con IA, adaptando la estética generativa a una narrativa tecnológica del sector médico.
+        </div>
+        <a href="https://lnkd.in/p/e2Cc-wpe" target="_blank" class="external-btn">
+          ▶ Ver publicación del proyecto en LinkedIn ↗
+        </a>
+      </div>
+
+      <!-- PROYECTO MONA OMRANI -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Animación para Presentación de Tutoriales</div>
+            <div class="card-client">Mona Omrani — Artista en Acuarela</div>
+          </div>
+          <div class="card-date">2026</div>
+        </div>
+        <div class="card-desc">
+          Edición y colaboración en el desarrollo de la animación de apertura para la serie de vídeos tutoriales artísticos próximos a lanzarse.
+        </div>
+        <div class="placeholder-box">
+          🎬 <em>Vídeo en fase de lanzamiento (Enlace próximo a publicar)</em>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>
