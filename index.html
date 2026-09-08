@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BETSY ROMERO | Editora de Contenido Audiovisual con IA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Betsy Romero | Editora Audiovisual & IA Generativa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #ffffff;
-            --card-bg: #f8fafc;
-            --card-border: #e2e8f0;
+            --surface-color: #f8fafc;
+            --border-color: #e2e8f0;
             --text-primary: #0f172a;
             --text-secondary: #475569;
-            --accent-color: #1e293b;
-            --accent-light: rgba(30, 41, 59, 0.06);
+            --accent-main: #0f172a;
+            --accent-hover: #1e293b;
+            --accent-soft: rgba(15, 23, 42, 0.05);
             --chip-bg: #ffffff;
-            --chip-border: #cbd5e1;
+            --radius-lg: 16px;
+            --radius-md: 10px;
         }
 
         * {
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -27,573 +30,603 @@
             background-color: var(--bg-color);
             color: var(--text-primary);
             margin: 0;
-            padding: 32px 16px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .container {
-            max-width: 840px;
-            width: 100%;
-        }
-
-        /* HEADER */
-        header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 40px 24px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            margin-bottom: 28px;
-        }
-
-        .profile-img {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-color);
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-            margin-bottom: 18px;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin: 0 0 8px 0;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-        }
-
-        .subtitle {
-            font-size: 1.05rem;
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: 16px;
-            line-height: 1.4;
-        }
-
-        .location-contact {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            display: flex;
-            gap: 18px;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .location-contact a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .location-contact a:hover {
-            color: var(--accent-color);
-            text-decoration: underline;
-        }
-
-        /* CV SECCIONES */
-        .cv-section {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 28px;
-        }
-
-        .cv-section h2 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-top: 0;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-            border-bottom: 2px solid var(--card-border);
-            padding-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-        }
-
-        .cv-section p {
-            color: var(--text-secondary);
-            font-size: 0.94rem;
-            line-height: 1.65;
-            margin: 0 0 16px 0;
-        }
-
-        .cv-section p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* LISTAS Y EXPERIENCIA */
-        .exp-item {
-            margin-bottom: 24px;
-        }
-
-        .exp-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .exp-title {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-
-        .exp-date {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-        }
-
-        ul.cv-list {
-            margin: 0;
-            padding-left: 20px;
-            color: var(--text-secondary);
-            font-size: 0.92rem;
+            padding: 0;
             line-height: 1.6;
         }
 
-        ul.cv-list li {
-            margin-bottom: 8px;
+        /* NAVBAR FIJA */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+            padding: 16px 24px;
         }
 
-        /* GRID DE SKILLS / HERRAMIENTAS */
-        .tools-group {
-            margin-bottom: 18px;
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .tools-group h3 {
-            font-size: 0.95rem;
-            font-weight: 600;
+        .logo {
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
             color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 70px 0 50px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media(min-width: 768px) {
+            .hero {
+                grid-template-columns: 1.3fr 0.7fr;
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent-soft);
+            color: var(--text-primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin: 0 0 16px 0;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            max-width: 580px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent-main);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--surface-color);
+        }
+
+        .hero-img-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-img {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--surface-color);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.08);
+        }
+
+        /* SECCIONES LANDING */
+        section {
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            margin-bottom: 36px;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
             margin: 0 0 8px 0;
         }
 
-        .skills-grid {
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* PORTAFOLIO SHOWCASE */
+        .grid-portfolio {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        @media(min-width: 640px) {
+            .grid-portfolio {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .card-video {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card-video:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+        }
+
+        .card-video h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+        }
+
+        .card-video p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin: 0 0 16px 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-wrapper.vertical {
+            padding-bottom: 177.77%; /* 9:16 */
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%; border: 0;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            background: var(--chip-bg);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-top: 12px;
+        }
+
+        .external-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background: #ffffff;
+            border: 1px dashed var(--border-color);
+            border-radius: var(--radius-md);
+            text-align: center;
+            gap: 12px;
+        }
+
+        /* SECCIÓN HERRAMIENTAS Y EXPERIENCIA */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media(min-width: 768px) {
+            .grid-2col {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .info-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+        }
+
+        .info-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0 0 16px 0;
+        }
+
+        .chips-group {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
 
-        .skill-chip {
-            background-color: var(--chip-bg);
-            color: var(--text-primary);
-            border: 1px solid var(--chip-border);
-            padding: 6px 14px;
+        .chip {
+            background: var(--chip-bg);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
             border-radius: 8px;
-            font-size: 0.84rem;
+            font-size: 0.82rem;
             font-weight: 500;
         }
 
-        /* SECCIÓN SHOWCASE / VÍDEOS */
-        .section-title {
-            font-size: 1.35rem;
+        .timeline-item {
+            margin-bottom: 20px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-title {
             font-weight: 700;
-            color: var(--text-primary);
-            margin: 40px 0 20px 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            letter-spacing: -0.01em;
+            font-size: 0.95rem;
         }
 
-        .section-title::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 22px;
-            background-color: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-
-        @media(min-width: 640px) {
-            .grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-        }
-
-        .card h3 {
-            margin: 0 0 8px 0;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .card p {
+        .timeline-date {
+            font-size: 0.8rem;
             color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .timeline-desc {
             font-size: 0.88rem;
-            line-height: 1.5;
-            margin: 0 0 14px 0;
+            color: var(--text-secondary);
+            margin: 0;
         }
 
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            overflow: hidden;
-            border-radius: 10px;
-            background: #000;
-        }
-
-        .video-container.short {
-            padding-bottom: 177.77%; /* 9:16 vertical */
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .linkedin-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 30px 16px;
-            background: #ffffff;
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
+        /* FOOTER / CONTACTO */
+        footer {
+            background: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0 30px 0;
             text-align: center;
-            gap: 12px;
         }
 
-        .btn-linkedin {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #ffffff;
-            padding: 10px 18px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: opacity 0.2s;
+        .footer-content h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0 0 12px 0;
         }
 
-        .btn-linkedin:hover {
-            opacity: 0.9;
+        .footer-content p {
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
         }
 
-        .tag {
-            display: inline-block;
-            background-color: var(--accent-light);
-            color: var(--accent-color);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-
-        .placeholder-card {
-            border: 2px dashed var(--card-border);
-            background: transparent;
-            text-align: center;
-            padding: 30px 20px;
+        .copyright {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-
-    <!-- HEADER / DATOS DE CONTACTO -->
-    <header>
-        <img src="IMG_0149.jpeg" alt="BETSY ROMERO" class="profile-img">
-        <h1>BETSY ROMERO</h1>
-        <div class="subtitle">Editora de Contenido Audiovisual con IA | Creadora de Vídeos Generativos | Multimedia & Marketing Digital</div>
-        <div class="location-contact">
-            <span>📍 Madrid, España</span>
-            <span>✉️ <a href="mailto:bet.romero@hotmail.com">bet.romero@hotmail.com</a></span>
-        </div>
-    </header>
-
-    <!-- PERFIL PROFESIONAL -->
-    <div class="cv-section">
-        <h2>Perfil Profesional</h2>
-        <p>Editora audiovisual especializada en la creación de contenido digital utilizando herramientas de Inteligencia Artificial generativa para imagen, vídeo y storytelling visual. Experiencia desarrollando piezas audiovisuales con IA para proyectos artísticos, comerciales y educativos, combinando creatividad, edición de vídeo y dirección visual.</p>
-        <p>Capacidad para transformar conceptos e ideas en vídeos atractivos mediante generación de imágenes, animación, edición, montaje y adaptación de contenidos para diferentes formatos digitales.</p>
-        <p>Perfil híbrido entre creatividad audiovisual, comunicación y visión de negocio, con experiencia en proyectos de marketing, contenidos digitales y producción multimedia.</p>
-    </div>
-
-    <!-- MUESTRA DE PROYECTOS AUDIOVISUALES (SHOWCASE) -->
-    <div class="section-title">Spots & Producción Audiovisual (16:9)</div>
-    <div class="grid">
-        <!-- ILS Design -->
-        <div class="card">
-            <div>
-                <h3>ILS Company — Calefacción & Diseño</h3>
-                <p>Creación de vídeo promocional para producto industrial utilizando herramientas de Inteligencia Artificial. Desarrollo de imágenes y escenas generativas orientadas a comunicación comercial.</p>
-                <span class="tag">Commercial / AI Scene Generation</span>
-            </div>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/UEPEyhmOyfM" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Clipedia Vol. 1 -->
-        <div class="card">
-            <div>
-                <h3>Clipedia — Showcase 16:9</h3>
-                <p>Presentación audiovisual en formato panorámico para síntesis de contenido y aprendizaje visual con IA.</p>
-                <span class="tag">Edición Audiovisual / Storytelling</span>
-            </div>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/z_zRBsvUmIU" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-title">Campañas Cortas & Redes (Vertical 9:16)</div>
-    <div class="grid">
-        <!-- Artist 360 -->
-        <div class="card">
-            <div>
-                <h3>Artist 360 — Galería de Arte (Madrid)</h3>
-                <p>Creación de un vídeo artístico utilizando escenas generadas con IA. Desarrollo del concepto visual, generación de imágenes, selección de escenas y montaje audiovisual.</p>
-                <span class="tag">Event Promo / Art & AI</span>
-            </div>
-            <div class="video-container short">
-                <iframe src="https://www.youtube.com/embed/dLkzrQe_AQE" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Kabbalah Mashiah -->
-        <div class="card">
-            <div>
-                <h3>Kabbalah Mashiah</h3>
-                <p>Producción y montaje de contenido vertical dinámico con elementos visuales sintéticos.</p>
-                <span class="tag">Creative Video / Shorts</span>
-            </div>
-            <div class="video-container short">
-                <iframe src="https://www.youtube.com/embed/DI3OohAVt_Y" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Clipedia Vol. 2 -->
-        <div class="card">
-            <div>
-                <h3>Clipedia — Promocional Vol. 1</h3>
-                <p>Spot vertical enfocado en alto dinamismo visual y retención de audiencia para redes sociales.</p>
-                <span class="tag">Social Ads / Engagement</span>
-            </div>
-            <div class="video-container short">
-                <iframe src="https://www.youtube.com/embed/2MYdPl4z9qA" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Clipedia Vol. 3 -->
-        <div class="card">
-            <div>
-                <h3>Clipedia — Promocional Vol. 2</h3>
-                <p>Variación creativa orientada a narrativa visual ágil mediante herramientas generativas de vídeo.</p>
-                <span class="tag">Social Ads / AI Content</span>
-            </div>
-            <div class="video-container short">
-                <iframe src="https://www.youtube.com/embed/oopU_ZzGgNY" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- Scopio Labs -->
-        <div class="card">
-            <div>
-                <h3>Scopio Labs — Publicación Tech</h3>
-                <p>Proyecto publicitario y showcase publicado en la red profesional LinkedIn.</p>
-                <span class="tag">Tech Promo / LinkedIn</span>
-            </div>
-            <div class="linkedin-box">
-                <p style="margin:0; font-size: 0.85rem; color: var(--text-secondary);">Ver la publicación directamente en LinkedIn:</p>
-                <a href="https://lnkd.in/p/e2Cc-wpe" target="_blank" rel="noopener noreferrer" class="btn-linkedin">
-                    Ver proyecto en LinkedIn ↗
-                </a>
-            </div>
-        </div>
-
-        <!-- Mona Omrani Placeholder -->
-        <div class="card placeholder-card">
-            <h3>Mona Omrani — Colaboración Artística</h3>
-            <p>Animación y edición de arte visual generativo.</p>
-            <span class="tag">Próximamente / En proceso</span>
-        </div>
-    </div>
-
-    <!-- EXPERIENCIA DESTACADA -->
-    <div class="cv-section" style="margin-top: 36px;">
-        <h2>Experiencia Destacada</h2>
-        
-        <div class="exp-item">
-            <div class="exp-title">Editora de Contenido Audiovisual IA | Proyectos Freelance</div>
-            <div class="exp-date">2024 – Actualidad</div>
-            <ul class="cv-list">
-                <li>Creación de vídeos generados mediante Inteligencia Artificial a partir de conceptos creativos, guiones visuales y referencias artísticas.</li>
-                <li>Desarrollo de piezas audiovisuales combinando generación de imágenes IA, animación, edición y postproducción.</li>
-                <li>Creación de contenido visual para proyectos culturales, artísticos y empresariales.</li>
-                <li>Experimentación y aplicación de diferentes modelos de IA generativa para obtener resultados visuales de alta calidad.</li>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">BETSY ROMERO</a>
+            <ul class="nav-links">
+                <li><a href="#portafolio">Portafolio</a></li>
+                <li><a href="#tecnologias">Tecnologías IA</a></li>
+                <li><a href="#experiencia">Trayectoria</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </div>
+    </nav>
 
-        <div class="exp-item">
-            <div class="exp-title">Proyecto educativo audiovisual — Artista de acuarela</div>
-            <ul class="cv-list">
-                <li>Edición de vídeo tutorial y adaptación del contenido para una presentación digital profesional.</li>
-                <li>Organización narrativa, montaje, cortes y mejora de la experiencia visual.</li>
-            </ul>
-        </div>
+    <div class="container">
+
+        <!-- HERO SECTION -->
+        <header class="hero">
+            <div>
+                <span class="hero-badge">AI Video & Storytelling Specialist</span>
+                <h1>Transformo conceptos en experiencias audiovisuales con IA</h1>
+                <p>Edición de vídeo, generación de imágenes sintéticas y dirección visual de alto impacto para marcas, proyectos culturales y comunicación comercial.</p>
+                <div class="hero-actions">
+                    <a href="#portafolio" class="btn-primary">Ver Portafolio de Vídeo</a>
+                    <a href="#contacto" class="btn-secondary">Contacto Directo</a>
+                </div>
+            </div>
+            <div class="hero-img-wrapper">
+                <img src="IMG_0149.jpeg" alt="Betsy Romero" class="hero-img">
+            </div>
+        </header>
+
+        <!-- PORTAFOLIO: VÍDEOS HORIZONTALES (16:9) -->
+        <section id="portafolio">
+            <div class="section-header">
+                <h2 class="section-title">Spots & Producción Commercial (16:9)</h2>
+                <p class="section-desc">Piezas promocionales y corporativas desarrolladas con herramientas generativas.</p>
+            </div>
+
+            <div class="grid-portfolio">
+                <!-- ILS Design -->
+                <div class="card-video">
+                    <div>
+                        <h3>ILS Company — Calefacción & Diseño</h3>
+                        <p>Vídeo promocional industrial con IA generativa para firma de diseño italiano.</p>
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/UEPEyhmOyfM" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div><span class="tag-pill">Commercial / AI Scene Generation</span></div>
+                </div>
+
+                <!-- Clipedia Vol. 1 -->
+                <div class="card-video">
+                    <div>
+                        <h3>Clipedia — Showcase 16:9</h3>
+                        <p>Presentación panorámica para la síntesis de contenido y aprendizaje visual con IA.</p>
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/z_zRBsvUmIU" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div><span class="tag-pill">Edición Audiovisual / Storytelling</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTAFOLIO: VÍDEOS VERTICALES (9:16) -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">Campañas Cortas & Redes (Vertical 9:16)</h2>
+                <p class="section-desc">Contenido dinámico en formato corto para maximizar el engagement en plataformas digitales.</p>
+            </div>
+
+            <div class="grid-portfolio">
+                <!-- Artist 360 -->
+                <div class="card-video">
+                    <div>
+                        <h3>Artist 360 — Galería de Arte (Madrid)</h3>
+                        <p>Vídeo artístico promocional utilizando escenas hiperrealistas generadas con IA.</p>
+                        <div class="video-wrapper vertical">
+                            <iframe src="https://www.youtube.com/embed/dLkzrQe_AQE" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div><span class="tag-pill">Event Promo / Art & AI</span></div>
+                </div>
+
+                <!-- Kabbalah Mashiah -->
+                <div class="card-video">
+                    <div>
+                        <h3>Kabbalah Mashiah</h3>
+                        <p>Producción y montaje de contenido vertical dinámico con estética sintética.</p>
+                        <div class="video-wrapper vertical">
+                            <iframe src="https://www.youtube.com/embed/DI3OohAVt_Y" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div><span class="tag-pill">Creative Video / Shorts</span></div>
+                </div>
+
+                <!-- Clipedia Vol. 2 -->
+                <div class="card-video">
+                    <div>
+                        <h3>Clipedia — Promocional Vol. 1</h3>
+                        <p>Spot vertical enfocado en retención de audiencia para redes sociales.</p>
+                        <div class="video-wrapper vertical">
+                            <iframe src="https://www.youtube.com/embed/2MYdPl4z9qA" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div><span class="tag-pill">Social Ads / Engagement</span></div>
+                </div>
+
+                <!-- Clipedia Vol. 3 -->
+                <div class="card-video">
+                    <div>
+                        <h3>Clipedia — Promocional Vol. 2</h3>
+                        <p>Variación narrativa ágil construida con modelos generativos de vídeo.</p>
+                        <div class="video-wrapper vertical">
+                            <iframe src="https://www.youtube.com/embed/oopU_ZzGgNY" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div><span class="tag-pill">Social Ads / AI Content</span></div>
+                </div>
+
+                <!-- Scopio Labs -->
+                <div class="card-video">
+                    <div>
+                        <h3>Scopio Labs — Publicación Tech</h3>
+                        <p>Showcase publicitario publicado en la red profesional LinkedIn.</p>
+                        <div class="external-box">
+                            <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);">Ver directamente en LinkedIn:</p>
+                            <a href="https://lnkd.in/p/e2Cc-wpe" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Ver en LinkedIn ↗</a>
+                        </div>
+                    </div>
+                    <div><span class="tag-pill">Tech Promo / LinkedIn</span></div>
+                </div>
+
+                <!-- Mona Omrani Placeholder -->
+                <div class="card-video" style="border: 2px dashed var(--border-color); background: transparent;">
+                    <div>
+                        <h3>Mona Omrani — Colaboración Artística</h3>
+                        <p>Animación y edición de arte visual generativo.</p>
+                    </div>
+                    <div><span class="tag-pill">Próximamente / En Proceso</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HERRAMIENTAS Y CAPACIDADES -->
+        <section id="tecnologias">
+            <div class="section-header">
+                <h2 class="section-title">Herramientas & Stack Creativo</h2>
+                <p class="section-desc">Especialización en modelos generativos y software de edición tradicional.</p>
+            </div>
+
+            <div class="grid-2col">
+                <div class="info-card">
+                    <h3>Generación de Imagen & Prompts</h3>
+                    <div class="chips-group">
+                        <span class="chip">ChatGPT (Prompts & Guion)</span>
+                        <span class="chip">Gemini</span>
+                        <span class="chip">Grok</span>
+                        <span class="chip">Meta AI</span>
+                        <span class="chip">SuperClip AI</span>
+                        <span class="chip">ComfyUI</span>
+                        <span class="chip">Claude</span>
+                        <span class="chip">Nano Banana</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>Generación de Vídeo & Edición</h3>
+                    <div class="chips-group">
+                        <span class="chip">Runway</span>
+                        <span class="chip">CapCut</span>
+                        <span class="chip">InShot</span>
+                        <span class="chip">Final Cut Pro</span>
+                        <span class="chip">SuperClip AI</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCIA Y FORMACIÓN -->
+        <section id="experiencia">
+            <div class="grid-2col">
+                <!-- Columna Experiencia -->
+                <div class="info-card">
+                    <h3>Experiencia Destacada</h3>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">Editora de Contenido Audiovisual IA (Freelance)</div>
+                        <div class="timeline-date">2024 – Actualidad</div>
+                        <p class="timeline-desc">Desarrollo de piezas audiovisuales integrando animación, síntesis de imagen y montaje para clientes culturales y empresariales.</p>
+                    </div>
+
+                    <div class="timeline-item" style="margin-top: 20px;">
+                        <div class="timeline-title">Proyecto Educativo — Artista de Acuarela</div>
+                        <p class="timeline-desc">Montaje y edición tutorial con enfoque en optimización narrativa y presentación digital profesional.</p>
+                    </div>
+
+                    <div class="timeline-item" style="margin-top: 20px;">
+                        <div class="timeline-title">Analista Control de Gestión — CGE S.A.</div>
+                        <p class="timeline-desc">Análisis de bases de datos, auditorías y manejo de SAP. (Aporta rigor analítico a la producción de proyectos).</p>
+                    </div>
+                </div>
+
+                <!-- Columna Formación -->
+                <div class="info-card">
+                    <h3>Formación & Perfil</h3>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">Ingeniera Comercial & Lic. en Economía</div>
+                        <p class="timeline-desc">Visión estratégica de negocio combinada con producción creativa digital.</p>
+                    </div>
+
+                    <div class="timeline-item" style="margin-top: 16px;">
+                        <div class="timeline-title">Formación Técnica & Audiovisual</div>
+                        <p class="timeline-desc">Técnico en Comercio Exterior (Duoc UC). Cursos especializados en Fotografía, Cámara HD, Final Cut Pro y GIS (Universidad Politécnica de Madrid).</p>
+                    </div>
+
+                    <div class="timeline-item" style="margin-top: 16px;">
+                        <div class="timeline-title">Idiomas</div>
+                        <div class="chips-group" style="margin-top: 6px;">
+                            <span class="chip">Español (Nativo)</span>
+                            <span class="chip">Inglés (B1)</span>
+                            <span class="chip">Italiano (En aprendizaje)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
 
-    <!-- HERRAMIENTAS DE INTELIGENCIA ARTIFICIAL -->
-    <div class="cv-section">
-        <h2>Herramientas de Inteligencia Artificial</h2>
-        
-        <div class="tools-group">
-            <h3>Generación de imágenes y contenido visual:</h3>
-            <div class="skills-grid">
-                <span class="skill-chip">ChatGPT (prompts & guion)</span>
-                <span class="skill-chip">Gemini</span>
-                <span class="skill-chip">Grok</span>
-                <span class="skill-chip">Meta AI</span>
-                <span class="skill-chip">SuperClip AI</span>
-                <span class="skill-chip">ComfyUI</span>
-                <span class="skill-chip">Claude</span>
-                <span class="skill-chip">Nano Banana</span>
+    <!-- FOOTER / CONTACTO -->
+    <footer id="contacto">
+        <div class="container footer-content">
+            <h2>¿Tienes un proyecto en mente?</h2>
+            <p>Hablemos sobre cómo integrar Inteligencia Artificial en tus producciones audiovisuales.</p>
+            <div class="hero-actions" style="justify-content: center;">
+                <a href="mailto:bet.romero@hotmail.com" class="btn-primary">Enviar Email: bet.romero@hotmail.com</a>
+                <a href="https://lnkd.in/p/e2Cc-wpe" target="_blank" class="btn-secondary">Perfil de LinkedIn</a>
+            </div>
+            <div class="copyright">
+                © 2026 Betsy Romero — Madrid, España. Todos los derechos reservados.
             </div>
         </div>
-
-        <div class="tools-group" style="margin-top: 16px;">
-            <h3>Generación y edición audiovisual:</h3>
-            <div class="skills-grid">
-                <span class="skill-chip">Runway</span>
-                <span class="skill-chip">SuperClip AI</span>
-                <span class="skill-chip">CapCut</span>
-                <span class="skill-chip">InShot</span>
-                <span class="skill-chip">Final Cut Pro</span>
-            </div>
-        </div>
-
-        <div class="tools-group" style="margin-top: 16px;">
-            <h3>Experiencia creando prompts para:</h3>
-            <div class="skills-grid">
-                <span class="skill-chip">Desarrollo de personajes y escenarios</span>
-                <span class="skill-chip">Imágenes hiperrealistas</span>
-                <span class="skill-chip">Secuencias visuales</span>
-                <span class="skill-chip">Transformación de ideas a audiovisual</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- COMPETENCIAS AUDIOVISUALES -->
-    <div class="cv-section">
-        <h2>Competencias Audiovisuales</h2>
-        <div class="skills-grid">
-            <span class="skill-chip">Edición y montaje de vídeo</span>
-            <span class="skill-chip">Creación de contenido con IA generativa</span>
-            <span class="skill-chip">Desarrollo de conceptos visuales</span>
-            <span class="skill-chip">Storytelling audiovisual</span>
-            <span class="skill-chip">Creación de prompts generativos</span>
-            <span class="skill-chip">Adaptación para RRSS y formatos digitales</span>
-            <span class="skill-chip">Dirección creativa y estilos visuales</span>
-            <span class="skill-chip">Postproducción y optimización de vídeo</span>
-        </div>
-    </div>
-
-    <!-- EXPERIENCIA COMPLEMENTARIA -->
-    <div class="cv-section">
-        <h2>Experiencia Complementaria</h2>
-        
-        <div class="exp-item">
-            <div class="exp-title">Analista Control de Gestión — CGE S.A.</div>
-            <ul class="cv-list">
-                <li>Análisis y depuración de bases de datos.</li>
-                <li>Control de información para procesos de auditoría.</li>
-                <li>Manejo de SAP para gestión y revisión de información.</li>
-                <li>Elaboración de reportes y análisis de datos.</li>
-            </ul>
-        </div>
-
-        <div class="exp-item" style="margin-top: 18px;">
-            <div class="exp-title">Gestión Comercial y Marketing Digital</div>
-            <ul class="cv-list">
-                <li>Creación de materiales comerciales y desarrollo de contenido visual para empresas.</li>
-                <li>Gestión de proyectos digitales y comunicación con clientes y equipos.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- FORMACIÓN E IDIOMAS -->
-    <div class="cv-section">
-        <h2>Formación e Idiomas</h2>
-        
-        <div class="exp-item">
-            <div class="exp-title">Formación Académica</div>
-            <ul class="cv-list">
-                <li><strong>Ingeniera Comercial:</strong> Especialización en gestión, negocios y análisis estratégico.</li>
-                <li><strong>Licenciada en Economía</strong></li>
-                <li><strong>Técnico en Comercio Exterior:</strong> Instituto Duoc UC.</li>
-            </ul>
-        </div>
-
-        <div class="exp-item" style="margin-top: 18px;">
-            <div class="exp-title">Formación Complementaria</div>
-            <div class="skills-grid" style="margin-top: 8px;">
-                <span class="skill-chip">Fotografía</span>
-                <span class="skill-chip">Edición audiovisual</span>
-                <span class="skill-chip">Cámara HD</span>
-                <span class="skill-chip">Final Cut Pro</span>
-                <span class="skill-chip">Marketing Digital</span>
-                <span class="skill-chip">GIS — U. Politécnica de Madrid</span>
-            </div>
-        </div>
-
-        <div class="exp-item" style="margin-top: 20px;">
-            <div class="exp-title">Idiomas</div>
-            <ul class="cv-list">
-                <li><strong>Español:</strong> Nativo</li>
-                <li><strong>Inglés:</strong> Intermedio (B1)</li>
-                <li><strong>Italiano:</strong> En aprendizaje</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- VALOR DIFERENCIAL -->
-    <div class="cv-section">
-        <h2>Valor Diferencial</h2>
-        <p>Profesional con combinación de creatividad audiovisual, herramientas de Inteligencia Artificial y visión empresarial. Capacidad para comprender objetivos de comunicación y convertirlos en piezas visuales innovadoras utilizando nuevas tecnologías generativas.</p>
-    </div>
-
-</div>
+    </footer>
 
 </body>
 </html>
