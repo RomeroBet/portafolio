@@ -1,657 +1,346 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Betsy Romero | Editora Audiovisual & Especialista en IA Generativa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #ffffff;
-            --surface-color: #f8fafc;
-            --border-color: #e2e8f0;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --accent-main: #0f172a;
-            --accent-hover: #1e293b;
-            --accent-soft: rgba(15, 23, 42, 0.05);
-            --chip-bg: #ffffff;
-            --radius-lg: 16px;
-            --radius-md: 10px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Betsy Romero | Editora de Vídeo & IA Generativa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:#f5f0eb; --beige:#ede5da; --beige2:#e2d8cc;
+  --rose:#e8c4b8; --rose-soft:#f2ddd6; --rose-mid:#c97a62;
+  --brown:#5c4033; --brown2:#3d2b1f;
+  --text:#2e1f17; --muted:#7a6459; --white:#fffcf9;
+  --border:#d8cdc4; --radius:14px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);font-size:15px;line-height:1.65;}
 
-        * {
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+nav{position:sticky;top:0;z-index:100;background:rgba(245,240,235,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px;}
+.nav-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:58px;}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--brown2);text-decoration:none;}
+.nav-links{display:flex;gap:26px;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.84rem;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--brown);}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+@media(max-width:600px){.wrap{padding:0 16px;}}
 
-        /* NAVBAR FIJA */
-        .navbar {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 100;
-            padding: 16px 24px;
-        }
+.hero{padding:68px 0 56px;display:grid;grid-template-columns:1fr 280px;gap:60px;align-items:center;}
+@media(max-width:740px){.hero{grid-template-columns:1fr;padding:44px 0 36px;gap:32px;}.hero-img-col{order:-1;display:flex;justify-content:center;}}
 
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.eyebrow{display:inline-block;background:var(--rose-soft);color:var(--rose-mid);border:1px solid var(--rose);border-radius:20px;padding:5px 14px;font-size:0.76rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:18px;}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2rem,3.8vw,3.2rem);line-height:1.13;color:var(--brown2);margin-bottom:16px;}
+.hero h1 em{font-style:italic;color:var(--rose-mid);}
+.hero-desc{color:var(--muted);font-size:0.97rem;max-width:500px;margin-bottom:28px;}
+.hero-btns{display:flex;gap:11px;flex-wrap:wrap;}
+.btn-primary{background:var(--brown2);color:var(--white);padding:11px 24px;border-radius:10px;text-decoration:none;font-weight:600;font-size:0.87rem;transition:background .2s;}
+.btn-primary:hover{background:var(--brown);}
+.btn-outline{background:transparent;color:var(--brown);border:1.5px solid var(--brown);padding:10px 22px;border-radius:10px;text-decoration:none;font-weight:600;font-size:0.87rem;transition:background .2s;}
+.btn-outline:hover{background:var(--beige);}
 
-        .logo {
-            font-weight: 800;
-            font-size: 1.15rem;
-            letter-spacing: -0.02em;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
+.photo-frame{width:240px;height:290px;border-radius:16px 16px 56px 16px;overflow:hidden;border:4px solid var(--beige2);box-shadow:6px 10px 28px rgba(92,64,51,0.14);position:relative;}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.photo-badge{position:absolute;bottom:12px;left:12px;right:12px;background:rgba(255,252,249,0.93);backdrop-filter:blur(8px);border-radius:9px;padding:9px 13px;font-size:0.76rem;color:var(--brown);}
+.photo-badge strong{display:block;font-size:0.86rem;color:var(--brown2);}
 
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
+section{padding:60px 0;border-top:1px solid var(--border);}
+.sec-label{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--rose-mid);margin-bottom:7px;}
+.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(1.4rem,2.8vw,2rem);color:var(--brown2);margin-bottom:8px;}
+.sec-sub{color:var(--muted);font-size:0.91rem;margin-bottom:36px;}
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
+.grid-port{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px;}
+.vcard{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .2s,box-shadow .2s;}
+.vcard:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(92,64,51,0.09);}
+.vcard-body{padding:16px 18px 12px;}
+.vcard-client{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--rose-mid);margin-bottom:3px;}
+.vcard-title{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--brown2);margin-bottom:5px;}
+.vcard-desc{font-size:0.82rem;color:var(--muted);margin-bottom:10px;}
+.r169{position:relative;padding-bottom:56.25%;background:#1a1008;}
+.r916{position:relative;padding-bottom:177.78%;background:#1a1008;}
+.r169 iframe,.r916 iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.vcard-foot{padding:9px 18px 14px;display:flex;flex-wrap:wrap;gap:5px;}
+.pill{background:var(--beige);border:1px solid var(--border);border-radius:5px;padding:3px 9px;font-size:0.72rem;font-weight:600;color:var(--muted);}
+.pill.r{background:var(--rose-soft);border-color:var(--rose);color:var(--rose-mid);}
+.ext-card{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:180px;gap:12px;padding:28px 16px;background:var(--beige);text-align:center;}
+.ext-card p{font-size:0.82rem;color:var(--muted);max-width:180px;}
 
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;}
+.tool-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;}
+.tool-block h4{font-size:0.76rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--rose-mid);margin-bottom:12px;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{background:var(--beige);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:0.79rem;font-weight:500;color:var(--brown);}
+.chip.hi{background:var(--rose-soft);border-color:var(--rose);color:var(--rose-mid);}
 
-        /* CONTENEDOR PRINCIPAL */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:640px){.two-col{grid-template-columns:1fr;}}
+.info-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;}
+.info-box h3{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--brown2);margin-bottom:22px;}
+.tl{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--beige2);}
+.tl:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+.tl-role{font-weight:700;font-size:0.91rem;color:var(--brown2);}
+.tl-where{font-size:0.8rem;color:var(--rose-mid);font-weight:600;margin-bottom:2px;}
+.tl-date{font-size:0.76rem;color:var(--muted);margin-bottom:6px;}
+.tl ul{padding-left:15px;color:var(--muted);font-size:0.82rem;}
+.tl ul li{margin-bottom:2px;}
 
-        /* HERO SECTION */
-        .hero {
-            padding: 70px 0 50px 0;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        @media(min-width: 768px) {
-            .hero {
-                grid-template-columns: 1.3fr 0.7fr;
-            }
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: var(--accent-soft);
-            color: var(--text-primary);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
-            margin: 0 0 16px 0;
-        }
-
-        .hero p {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            margin-bottom: 28px;
-            max-width: 580px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: var(--accent-main);
-            color: #ffffff;
-            padding: 12px 24px;
-            border-radius: var(--radius-md);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.2s;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-hover);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-            padding: 12px 24px;
-            border-radius: var(--radius-md);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.2s;
-        }
-
-        .btn-secondary:hover {
-            background: var(--surface-color);
-        }
-
-        .hero-img-wrapper {
-            display: flex;
-            justify-content: center;
-        }
-
-        .hero-img {
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--surface-color);
-            box-shadow: 0 20px 35px rgba(0,0,0,0.08);
-        }
-
-        /* SECCIONES LANDING */
-        section {
-            padding: 60px 0;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .section-header {
-            margin-bottom: 36px;
-        }
-
-        .section-title {
-            font-size: 1.75rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin: 0 0 8px 0;
-        }
-
-        .section-desc {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin: 0;
-        }
-
-        /* PORTAFOLIO SHOWCASE */
-        .grid-portfolio {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 28px;
-        }
-
-        @media(min-width: 640px) {
-            .grid-portfolio {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .card-video {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card-video:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.05);
-        }
-
-        .card-video h3 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin: 0 0 6px 0;
-        }
-
-        .card-video p {
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-            margin: 0 0 16px 0;
-        }
-
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            background: #000;
-        }
-
-        .video-wrapper.vertical {
-            padding-bottom: 177.77%; /* 9:16 */
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%; border: 0;
-        }
-
-        .tag-pill {
-            display: inline-block;
-            background: var(--chip-bg);
-            border: 1px solid var(--border-color);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-top: 12px;
-        }
-
-        .external-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            background: #ffffff;
-            border: 1px dashed var(--border-color);
-            border-radius: var(--radius-md);
-            text-align: center;
-            gap: 12px;
-        }
-
-        /* SECCIÓN HERRAMIENTAS Y EXPERIENCIA */
-        .grid-2col {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-        }
-
-        @media(min-width: 768px) {
-            .grid-2col {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .info-card {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 28px;
-        }
-
-        .info-card h3 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin: 0 0 16px 0;
-        }
-
-        .chips-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .chip {
-            background: var(--chip-bg);
-            border: 1px solid var(--border-color);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.82rem;
-            font-weight: 500;
-        }
-
-        .timeline-item {
-            margin-bottom: 20px;
-        }
-
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-title {
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-
-        .timeline-date {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-bottom: 6px;
-        }
-
-        ul.cv-list {
-            margin: 6px 0 0 0;
-            padding-left: 18px;
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            line-height: 1.5;
-        }
-
-        ul.cv-list li {
-            margin-bottom: 4px;
-        }
-
-        /* FOOTER / CONTACTO */
-        footer {
-            background: var(--surface-color);
-            border-top: 1px solid var(--border-color);
-            padding: 60px 0 30px 0;
-            text-align: center;
-        }
-
-        .footer-content h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin: 0 0 12px 0;
-        }
-
-        .footer-content p {
-            color: var(--text-secondary);
-            margin: 0 0 24px 0;
-        }
-
-        .copyright {
-            margin-top: 50px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-    </style>
+footer{background:var(--brown2);color:var(--cream);padding:60px 32px 32px;text-align:center;}
+footer h2{font-family:'DM Serif Display',serif;font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:11px;color:var(--white);}
+footer p{color:var(--beige2);margin-bottom:28px;font-size:0.93rem;}
+.footer-btns{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-bottom:44px;}
+.btn-light{background:var(--cream);color:var(--brown2);padding:11px 24px;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.86rem;}
+.btn-ghost{background:transparent;color:var(--cream);border:1.5px solid rgba(245,240,235,0.38);padding:10px 22px;border-radius:10px;text-decoration:none;font-weight:600;font-size:0.86rem;}
+.copy{font-size:0.76rem;color:var(--beige2);opacity:.55;}
+</style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">BETSY ROMERO</a>
-            <ul class="nav-links">
-                <li><a href="#portafolio">Portafolio</a></li>
-                <li><a href="#tecnologias">Herramientas IA</a></li>
-                <li><a href="#experiencia">Trayectoria</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">Betsy Romero</a>
+    <ul class="nav-links">
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#herramientas">Herramientas IA</a></li>
+      <li><a href="#trayectoria">Trayectoria</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <span class="eyebrow">Editora de Vídeo · IA Generativa · Madrid</span>
+      <h1>Edición audiovisual<br>con <em>inteligencia<br>artificial</em></h1>
+      <p class="hero-desc">Creo y edito piezas de vídeo integrando IA generativa para generación de escenas, animación y postproducción. Proyectos para galerías de arte, marcas tecnológicas, productoras y artistas.</p>
+      <div class="hero-btns">
+        <a href="#portfolio" class="btn-primary">Ver trabajos</a>
+        <a href="#contacto" class="btn-outline">Contacto</a>
+      </div>
+    </div>
+    <div class="hero-img-col">
+      <div class="photo-frame">
+        <img src="https://raw.githubusercontent.com/RomeroBet/portafolio/main/IMG_0149.jpeg" alt="Betsy Mabel Romero">
+        <div class="photo-badge">
+          <strong>Betsy Mabel Romero</strong>
+          Madrid, España · Disponible
         </div>
-    </nav>
+      </div>
+    </div>
+  </header>
+</div>
 
-    <div class="container">
+<section id="portfolio">
+  <div class="wrap">
+    <div class="sec-label">Portfolio</div>
+    <h2 class="sec-title">Producciones audiovisuales</h2>
+    <p class="sec-sub">Proyectos de edición, creación de escenas con IA y contenido digital para distintos clientes y sectores — 2025/2026.</p>
+    <div class="grid-port">
 
-        <!-- HERO SECTION -->
-        <header class="hero">
-            <div>
-                <span class="hero-badge">Creadora de Contenido & AI Video Specialist</span>
-                <h1>Edición Audiovisual e Inteligencia Artificial Generativa</h1>
-                <p>Especializada en la creación de contenido multimedia, edición de vídeo y storytelling visual utilizando herramientas avanzadas de IA. Amplia experiencia en la realización de campañas publicitarias y proyectos digitales.</p>
-                <div class="hero-actions">
-                    <a href="#portafolio" class="btn-primary">Ver Trabajos Audiovisuales</a>
-                    <a href="#contacto" class="btn-secondary">Contacto Directo</a>
-                </div>
-            </div>
-            <div class="hero-img-wrapper">
-                <img src="IMG_0149.jpeg" alt="Betsy Romero" class="hero-img">
-            </div>
-        </header>
+      <div class="vcard">
+        <div class="vcard-body">
+          <div class="vcard-client">Artist 360 · Galería de Arte, Madrid</div>
+          <div class="vcard-title">Vídeo artístico con escenas de IA</div>
+          <div class="vcard-desc">Creación y edición completa: generación de escenas con IA, curación visual y montaje narrativo. 2026.</div>
+        </div>
+        <div class="r916"><iframe src="https://www.youtube.com/embed/dLkzrQe_AQE" allowfullscreen loading="lazy"></iframe></div>
+        <div class="vcard-foot"><span class="pill r">IA Generativa</span><span class="pill">Escenas</span><span class="pill">Arte</span></div>
+      </div>
 
-        <!-- PORTAFOLIO: VÍDEOS HORIZONTALES (16:9) -->
-        <section id="portafolio">
-            <div class="section-header">
-                <h2 class="section-title">Producciones Audiovisuales & Spots (16:9)</h2>
-                <p class="section-desc">Creación de piezas promocionales y contenido corporativo.</p>
-            </div>
+      <div class="vcard">
+        <div class="vcard-body">
+          <div class="vcard-client">Mona Omrani · Artista Acuarela</div>
+          <div class="vcard-title">Animación para lanzamiento de tutoriales</div>
+          <div class="vcard-desc">Colaboración en animación para presentación de tutoriales de la artista. Proyecto vía Clipedia, próximo a lanzarse. 2026.</div>
+        </div>
+        <div class="r916"><iframe src="https://www.youtube.com/embed/l5SJXsEi2gk" allowfullscreen loading="lazy"></iframe></div>
+        <div class="vcard-foot"><span class="pill r">Animación</span><span class="pill">Tutoriales</span><span class="pill">Arte</span></div>
+      </div>
 
-            <div class="grid-portfolio">
-                <!-- ILS Design -->
-                <div class="card-video">
-                    <div>
-                        <h3>ILS Design — Calefacción & Diseño</h3>
-                        <p>Desarrollo de propuesta publicitaria audiovisual generada mediante IA. (En fase previa a publicación).</p>
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/UEPEyhmOyfM" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div><span class="tag-pill">Spot Publicitario / IA</span></div>
-                </div>
+      <div class="vcard">
+        <div class="vcard-body">
+          <div class="vcard-client">Kabbalah Mashiah · 2025–2026</div>
+          <div class="vcard-title">Edición y creación de vídeo</div>
+          <div class="vcard-desc">Proyecto audiovisual: edición de clips verticales y creación de piezas para redes sociales.</div>
+        </div>
+        <div class="r916"><iframe src="https://www.youtube.com/embed/DI3OohAVt_Y" allowfullscreen loading="lazy"></iframe></div>
+        <div class="vcard-foot"><span class="pill r">Edición</span><span class="pill">Reels</span><span class="pill">RRSS</span></div>
+      </div>
 
-                <!-- Clipedia Vol. 1 -->
-                <div class="card-video">
-                    <div>
-                        <h3>Clipedia — Contenido Publicitario (16:9)</h3>
-                        <p>Edición y montaje de piezas de síntesis visual y aprendizaje para la marca Clipedia.</p>
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/z_zRBsvUmIU" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div><span class="tag-pill">Edición Audiovisual / Storytelling</span></div>
-                </div>
-            </div>
-        </section>
+      <div class="vcard">
+        <div class="vcard-body">
+          <div class="vcard-client">Scopio · Tecnología Médica · 2026</div>
+          <div class="vcard-title">Escenas IA y edición corporativa</div>
+          <div class="vcard-desc">Edición de vídeos y creación de escenas con IA para empresa de tecnología médica. Publicado en LinkedIn.</div>
+        </div>
+        <div class="ext-card">
+          <div style="font-size:1.8rem">🔗</div>
+          <p>Publicación oficial en LinkedIn</p>
+          <a href="https://lnkd.in/p/e2Cc-wpe" target="_blank" rel="noopener" class="btn-primary" style="font-size:0.8rem;padding:8px 16px;">Ver en LinkedIn ↗</a>
+        </div>
+        <div class="vcard-foot"><span class="pill r">Escenas IA</span><span class="pill">Corporativo</span><span class="pill">Tech</span></div>
+      </div>
 
-        <!-- PORTAFOLIO: VÍDEOS VERTICALES (9:16) -->
-        <section>
-            <div class="section-header">
-                <h2 class="section-title">Formatos Cortos & Redes Sociales (Vertical 9:16)</h2>
-                <p class="section-desc">Contenido ágil y dinámico para campañas digitales.</p>
-            </div>
+      <div class="vcard">
+        <div class="vcard-body">
+          <div class="vcard-client">ILS Design · Calefacción & Diseño</div>
+          <div class="vcard-title">Spot publicitario generado con IA</div>
+          <div class="vcard-desc">Propuesta audiovisual publicitaria generada íntegramente con IA. En fase previa a publicación.</div>
+        </div>
+        <div class="r169"><iframe src="https://www.youtube.com/embed/UEPEyhmOyfM" allowfullscreen loading="lazy"></iframe></div>
+        <div class="vcard-foot"><span class="pill r">Spot IA</span><span class="pill">Publicidad</span></div>
+      </div>
 
-            <div class="grid-portfolio">
-                <!-- Artist 360 -->
-                <div class="card-video">
-                    <div>
-                        <h3>Artist 360 — Feria de Arte (Madrid)</h3>
-                        <p>Creación de vídeo promocional combinando edición digital y generación de escenas con IA.</p>
-                        <div class="video-wrapper vertical">
-                            <iframe src="https://www.youtube.com/embed/dLkzrQe_AQE" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div><span class="tag-pill">Event Promo / Arte & IA</span></div>
-                </div>
+      <div class="vcard">
+        <div class="vcard-body">
+          <div class="vcard-client">Clipedia · Productora Audiovisual</div>
+          <div class="vcard-title">Contenido publicitario 16:9</div>
+          <div class="vcard-desc">Edición y montaje de piezas de síntesis visual para la marca Clipedia. Madrid, 2025–2026.</div>
+        </div>
+        <div class="r169"><iframe src="https://www.youtube.com/embed/z_zRBsvUmIU" allowfullscreen loading="lazy"></iframe></div>
+        <div class="vcard-foot"><span class="pill r">Edición</span><span class="pill">Storytelling</span></div>
+      </div>
 
-                <!-- Kabbalah Mashiah -->
-                <div class="card-video">
-                    <div>
-                        <h3>Kabbalah Mashiah</h3>
-                        <p>Montaje y edición de clips verticales orientados al alcance e interacción en redes.</p>
-                        <div class="video-wrapper vertical">
-                            <iframe src="https://www.youtube.com/embed/DI3OohAVt_Y" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div><span class="tag-pill">Contenido Digital / Reels</span></div>
-                </div>
+      <div class="vcard">
+        <div class="vcard-body">
+          <div class="vcard-client">Clipedia · Social Ads Vol. 1</div>
+          <div class="vcard-title">Publicidad vertical para redes</div>
+          <div class="vcard-desc">Spot en formato 9:16 diseñado para maximizar engagement en redes sociales.</div>
+        </div>
+        <div class="r916"><iframe src="https://www.youtube.com/embed/2MYdPl4z9qA" allowfullscreen loading="lazy"></iframe></div>
+        <div class="vcard-foot"><span class="pill r">Social Ads</span><span class="pill">Vertical</span></div>
+      </div>
 
-                <!-- Clipedia Vol. 2 -->
-                <div class="card-video">
-                    <div>
-                        <h3>Clipedia — Publicidad Vol. 1</h3>
-                        <p>Spot publicitario en formato vertical diseñado para maximizar el engagement.</p>
-                        <div class="video-wrapper vertical">
-                            <iframe src="https://www.youtube.com/embed/2MYdPl4z9qA" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div><span class="tag-pill">Social Ads / Clipedia</span></div>
-                </div>
-
-                <!-- Clipedia Vol. 3 -->
-                <div class="card-video">
-                    <div>
-                        <h3>Clipedia — Publicidad Vol. 2</h3>
-                        <p>Edición de contenido dinámico mediante generación asistida con Inteligencia Artificial.</p>
-                        <div class="video-wrapper vertical">
-                            <iframe src="https://www.youtube.com/embed/oopU_ZzGgNY" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div><span class="tag-pill">Social Ads / Clipedia</span></div>
-                </div>
-
-                <!-- Scopio Labs -->
-                <div class="card-video">
-                    <div>
-                        <h3>Scopio — Colaboración vía Clipedia</h3>
-                        <p>Pieza publicitaria de perfil tecnológico publicada en LinkedIn.</p>
-                        <div class="external-box">
-                            <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);">Ver publicación oficial:</p>
-                            <a href="https://lnkd.in/p/e2Cc-wpe" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Ver en LinkedIn ↗</a>
-                        </div>
-                    </div>
-                    <div><span class="tag-pill">Tech Promo / LinkedIn</span></div>
-                </div>
-
-                <!-- Mona Omrani -->
-                <div class="card-video">
-                    <div>
-                        <h3>Mona Omrani — Proyecto Artístico</h3>
-                        <p>Edición audiovisual y tratamiento estético para proyecto creativo.</p>
-                        <div class="video-wrapper vertical" style="background:#1e293b; display:flex; align-items:center; justify-content:center; color:#fff; text-align:center;">
-                            <p style="padding:10px; font-size:0.85rem; margin:0;">Edición & Arte Visual</p>
-                        </div>
-                    </div>
-                    <div><span class="tag-pill">Colaboración Artística</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- HERRAMIENTAS Y CAPACIDADES -->
-        <section id="tecnologias">
-            <div class="section-header">
-                <h2 class="section-title">Stack Técnico & Herramientas IA</h2>
-                <p class="section-desc">Dominio de plataformas de generación de imagen, vídeo y software audiovisual.</p>
-            </div>
-
-            <div class="grid-2col">
-                <div class="info-card">
-                    <h3>Generación IA & Prompting</h3>
-                    <div class="chips-group">
-                        <span class="chip">Kling AI</span>
-                        <span class="chip">ComfyUI</span>
-                        <span class="chip">ChatGPT</span>
-                        <span class="chip">Gemini</span>
-                        <span class="chip">Claude</span>
-                        <span class="chip">Grok</span>
-                        <span class="chip">Meta AI</span>
-                        <span class="chip">Nano Banana</span>
-                        <span class="chip">SuperClip AI</span>
-                        <span class="chip">NotebookLM</span>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <h3>Edición, Montaje & Diseño</h3>
-                    <div class="chips-group">
-                        <span class="chip">Final Cut Pro</span>
-                        <span class="chip">InShot</span>
-                        <span class="chip">Canva</span>
-                        <span class="chip">Edición de Guiones</span>
-                        <span class="chip">Storytelling Visual</span>
-                        <span class="chip">Gestión de Redes Sociales</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- EXPERIENCIA Y FORMACIÓN -->
-        <section id="experiencia">
-            <div class="grid-2col">
-                <!-- Columna Experiencia -->
-                <div class="info-card">
-                    <h3>Experiencia Audiovisual & Digital</h3>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-title">Soporte Audiovisual y Creadora de Contenido IA</div>
-                        <div class="timeline-date">2025 – Presente | España</div>
-                        <ul class="cv-list">
-                            <li>Edición de vídeos, generación de escenas con IA y montaje multimedia para clientes del sector cultural y publicitario.</li>
-                            <li>Realización de proyectos comerciales y colaboraciones creativas para marcas como Clipedia, Scopio, Artist 360, Kabbalah Mashiah, Mona Omrani e ILS Design.</li>
-                            <li>Apoyo en la estrategia y creación de piezas audiovisuales para la captación de clientes.</li>
-                        </ul>
-                    </div>
-
-                    <div class="timeline-item" style="margin-top: 20px;">
-                        <div class="timeline-title">Comunicación Digital & Creación de Contenido</div>
-                        <div class="timeline-date">2005 – 2024</div>
-                        <ul class="cv-list">
-                            <li>Desarrollo de branding, comunicación en redes sociales (Instagram, Facebook) y producción gráfica/multimedia.</li>
-                            <li>Gestión de clientes y soporte en proyectos de comunicación corporativa y digital.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Columna Formación -->
-                <div class="info-card">
-                    <h3>Formación Audiovisual & IA</h3>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-title">Especialización en Contenido Audiovisual</div>
-                        <p class="timeline-desc" style="font-size:0.88rem; color:var(--text-secondary);">Founders (Curso Online — En Curso)</p>
-                    </div>
-
-                    <div class="timeline-item" style="margin-top: 14px;">
-                        <div class="timeline-title">Curso Especializado en IA</div>
-                        <p class="timeline-desc" style="font-size:0.88rem; color:var(--text-secondary);">Revolutia (Curso Online — En Curso)</p>
-                    </div>
-
-                    <div class="timeline-item" style="margin-top: 14px;">
-                        <div class="timeline-title">Comunicación Audiovisual</div>
-                        <p class="timeline-desc" style="font-size:0.88rem; color:var(--text-secondary);">Universidad UNIACC (2011)</p>
-                    </div>
-
-                    <div class="timeline-item" style="margin-top: 14px;">
-                        <div class="timeline-title">Base Estratégica & Negocios</div>
-                        <p class="timeline-desc" style="font-size:0.88rem; color:var(--text-secondary);">Ingeniería Comercial, Lic. en Economía (USACH) y Técnico en Comercio Exterior (Duoc UC).</p>
-                    </div>
-
-                    <div class="timeline-item" style="margin-top: 20px;">
-                        <div class="timeline-title">Idiomas</div>
-                        <ul class="cv-list" style="padding-left: 0; list-style: none;">
-                            <li><strong>Español:</strong> Nativo</li>
-                            <li><strong>Inglés:</strong> B1 (En curso)</li>
-                            <li><strong>Francés:</strong> En aprendizaje</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <div class="vcard">
+        <div class="vcard-body">
+          <div class="vcard-client">Clipedia · Social Ads Vol. 2</div>
+          <div class="vcard-title">Edición con asistencia de IA</div>
+          <div class="vcard-desc">Contenido dinámico con generación asistida por IA para campaña digital.</div>
+        </div>
+        <div class="r916"><iframe src="https://www.youtube.com/embed/oopU_ZzGgNY" allowfullscreen loading="lazy"></iframe></div>
+        <div class="vcard-foot"><span class="pill r">IA</span><span class="pill">Social Ads</span></div>
+      </div>
 
     </div>
+  </div>
+</section>
 
-    <!-- FOOTER / CONTACTO -->
-    <footer id="contacto">
-        <div class="container footer-content">
-            <h2>¿Tienes un proyecto audiovisual en mente?</h2>
-            <p>Hablemos sobre cómo integrar Inteligencia Artificial y edición profesional en tus piezas de vídeo.</p>
-            <div class="hero-actions" style="justify-content: center;">
-                <a href="mailto:bet.romero@hotmail.com" class="btn-primary">Enviar Email: bet.romero@hotmail.com</a>
-                <a href="https://lnkd.in/p/e2Cc-wpe" target="_blank" class="btn-secondary">Perfil de LinkedIn</a>
-            </div>
-            <div class="copyright">
-                © 2026 Betsy Romero. Todos los derechos reservados.
-            </div>
+<section id="herramientas">
+  <div class="wrap">
+    <div class="sec-label">Stack técnico</div>
+    <h2 class="sec-title">Herramientas & IA</h2>
+    <p class="sec-sub">Plataformas de generación de vídeo e imagen con IA, software de edición y herramientas creativas.</p>
+    <div class="tools-grid">
+      <div class="tool-block">
+        <h4>Generación de vídeo con IA</h4>
+        <div class="chips">
+          <span class="chip hi">Kling AI</span>
+          <span class="chip hi">Grok</span>
+          <span class="chip hi">Meta AI</span>
+          <span class="chip hi">SuperClip</span>
+          <span class="chip hi">ComfyUI</span>
         </div>
-    </footer>
+      </div>
+      <div class="tool-block">
+        <h4>Edición & montaje</h4>
+        <div class="chips">
+          <span class="chip hi">Final Cut Pro</span>
+          <span class="chip hi">InShot</span>
+          <span class="chip">Canva</span>
+        </div>
+      </div>
+      <div class="tool-block">
+        <h4>IA de texto & apoyo creativo</h4>
+        <div class="chips">
+          <span class="chip">ChatGPT</span>
+          <span class="chip">Claude</span>
+          <span class="chip">Gemini</span>
+          <span class="chip">NotebookLM</span>
+        </div>
+      </div>
+      <div class="tool-block">
+        <h4>Creación de contenido</h4>
+        <div class="chips">
+          <span class="chip">Guión & narrativa</span>
+          <span class="chip">Branding visual</span>
+          <span class="chip">RRSS</span>
+          <span class="chip">Storytelling</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trayectoria">
+  <div class="wrap">
+    <div class="sec-label">Trayectoria</div>
+    <h2 class="sec-title">Experiencia & Formación</h2>
+    <div class="two-col">
+      <div class="info-box">
+        <h3>Experiencia audiovisual</h3>
+        <div class="tl">
+          <div class="tl-role">Editora de Vídeo & Creadora de Contenido IA</div>
+          <div class="tl-where">Clipedia · Artist 360 · Scopio · Kabbalah Mashiah · Mona Omrani · ILS Design</div>
+          <div class="tl-date">2025–2026 · Madrid, España</div>
+          <ul>
+            <li>Generación de escenas con IA y montaje narrativo</li>
+            <li>Edición de vídeo horizontal y vertical para distintos sectores</li>
+            <li>Animación para lanzamiento de contenido educativo artístico</li>
+            <li>Spots publicitarios generados con IA</li>
+          </ul>
+        </div>
+        <div class="tl">
+          <div class="tl-role">Comunicación Digital & Contenido para RRSS</div>
+          <div class="tl-where">Proyectos freelance & propios · Chile</div>
+          <div class="tl-date">2005–2024</div>
+          <ul>
+            <li>Branding, estrategia visual y gestión de comunidades</li>
+            <li>Creación de contenido para Instagram y Facebook</li>
+          </ul>
+        </div>
+      </div>
+      <div class="info-box">
+        <h3>Formación</h3>
+        <div class="tl">
+          <div class="tl-role">Inteligencia Artificial aplicada</div>
+          <div class="tl-where">Revolutia · Escuela online especializada en IA</div>
+          <div class="tl-date">2026 · En curso</div>
+        </div>
+        <div class="tl">
+          <div class="tl-role">Comunicación Audiovisual</div>
+          <div class="tl-where">Universidad UNIACC</div>
+          <div class="tl-date">2011</div>
+        </div>
+        <div class="tl">
+          <div class="tl-role">Ingeniería Comercial · Lic. en Economía</div>
+          <div class="tl-where">Universidad Santiago de Chile</div>
+          <div class="tl-date">2015–2020</div>
+        </div>
+        <div class="tl">
+          <div class="tl-role">Técnico en Comercio Exterior</div>
+          <div class="tl-where">Instituto Duoc UC</div>
+          <div class="tl-date">2012–2014</div>
+        </div>
+        <div class="tl">
+          <div class="tl-role">Idiomas</div>
+          <div class="tl-where" style="font-weight:400;color:var(--muted);">Español nativo &nbsp;·&nbsp; Inglés B1 (en curso)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contacto">
+  <h2>¿Tienes un proyecto audiovisual?</h2>
+  <p>Hablemos sobre cómo integrar IA generativa y edición profesional en tus vídeos.</p>
+  <div class="footer-btns">
+    <a href="mailto:bet.romero@hotmail.com" class="btn-light">bet.romero@hotmail.com</a>
+    <a href="https://wa.me/56993490228" target="_blank" class="btn-ghost">WhatsApp ↗</a>
+  </div>
+  <div class="copy">© 2026 Betsy Mabel Romero · Madrid, España</div>
+</footer>
 
 </body>
 </html>
