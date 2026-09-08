@@ -7,14 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0f1115;
-            --card-bg: #181a20;
-            --card-border: #262932;
-            --text-primary: #f0f2f5;
-            --text-secondary: #9da3ae;
-            --accent-purple: #8b5cf6;
-            --accent-glow: rgba(139, 92, 246, 0.15);
-            --tag-bg: #222630;
+            --bg-color: #ffffff;
+            --card-bg: #f9fafb;
+            --card-border: #e5e7eb;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            /* Si prefieres el celeste calipso, cambia #7c3aed por #0284c7 */
+            --accent-color: #7c3aed; 
+            --accent-light: rgba(124, 58, 237, 0.08);
+            --tag-bg: #f3f4f6;
         }
 
         body {
@@ -22,7 +23,7 @@
             background-color: var(--bg-color);
             color: var(--text-primary);
             margin: 0;
-            padding: 24px 16px;
+            padding: 32px 16px;
             display: flex;
             justify-content: center;
         }
@@ -38,69 +39,123 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 30px 20px;
+            padding: 36px 20px;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 16px;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
 
         .profile-img {
-            width: 110px;
-            height: 110px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--accent-purple);
-            box-shadow: 0 0 20px var(--accent-glow);
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
             margin-bottom: 16px;
         }
 
         h1 {
-            font-size: 2rem;
+            font-size: 2.1rem;
             font-weight: 700;
             margin: 0 0 6px 0;
             color: var(--text-primary);
+            letter-spacing: -0.02em;
         }
 
         .subtitle {
             font-size: 1rem;
-            color: var(--accent-purple);
-            font-weight: 500;
-            margin-bottom: 12px;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 14px;
         }
 
         .location-contact {
             color: var(--text-secondary);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             display: flex;
-            gap: 12px;
+            gap: 16px;
             flex-wrap: wrap;
             justify-content: center;
+            align-items: center;
+        }
+
+        .location-contact a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .location-contact a:hover {
+            color: var(--accent-color);
+        }
+
+        /* SECCIÓN CV / SOBRE MÍ */
+        .cv-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 32px;
+        }
+
+        .cv-section h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .cv-section p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-chip {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            border: 1px solid var(--card-border);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 500;
         }
 
         .section-title {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: 1.3rem;
+            font-weight: 700;
             color: var(--text-primary);
-            margin: 36px 0 18px 0;
+            margin: 40px 0 20px 0;
             display: flex;
             align-items: center;
             gap: 10px;
+            letter-spacing: -0.01em;
         }
 
         .section-title::before {
             content: '';
             display: inline-block;
             width: 4px;
-            height: 18px;
-            background-color: var(--accent-purple);
+            height: 20px;
+            background-color: var(--accent-color);
             border-radius: 2px;
         }
 
         .grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 24px;
         }
 
         @media(min-width: 640px) {
@@ -112,29 +167,31 @@
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .card:hover {
-            border-color: #3b3f4d;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
         }
 
         .card h3 {
             margin: 0 0 8px 0;
             font-size: 1.05rem;
             font-weight: 600;
+            color: var(--text-primary);
         }
 
         .card p {
             color: var(--text-secondary);
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             line-height: 1.5;
-            margin: 0 0 12px 0;
+            margin: 0 0 14px 0;
         }
 
         .video-container {
@@ -161,13 +218,12 @@
 
         .tag {
             display: inline-block;
-            background-color: var(--tag-bg);
-            color: var(--text-secondary);
-            border: 1px solid var(--card-border);
+            background-color: var(--accent-light);
+            color: var(--accent-color);
             padding: 4px 10px;
             border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 500;
+            font-size: 0.78rem;
+            font-weight: 600;
             margin-top: 10px;
         }
 
@@ -185,12 +241,27 @@
     <header>
         <img src="IMG_0149.jpeg" alt="Betsy Mabel Romero" class="profile-img">
         <h1>Betsy Mabel Romero</h1>
-        <div class="subtitle">Editora de Vídeo con IA · Generación & Postproducción</div>
+        <div class="subtitle">AI Video Editor & Audiovisual Specialist</div>
         <div class="location-contact">
             <span>📍 Madrid, España</span>
-            <span>✉️ bet.romero@hotmail.com</span>
+            <span>✉️ <a href="mailto:bet.romero@hotmail.com">bet.romero@hotmail.com</a></span>
         </div>
     </header>
+
+    <!-- SECCIÓN CV / SOBRE MÍ -->
+    <div class="cv-section">
+        <h2>Perfil Profesional</h2>
+        <p>Especialista en edición de vídeo e integración de Inteligencia Artificial generativa para la producción audiovisual. Combinando técnicas tradicionales de montaje y postproducción con workflows avanzados de IA (generación de imagen a vídeo, animación sintética, síntesis de voz y composición cinematográfica), transformo conceptos en piezas comerciales, spots publicitarios y contenido narrativo de alto impacto.</p>
+        
+        <div class="skills-grid">
+            <span class="skill-chip">Edición de Vídeo (Premiere Pro / DaVinci)</span>
+            <span class="skill-chip">Generación de Vídeo IA (Runway / Pika / Sora)</span>
+            <span class="skill-chip">ComfyUI & Workflows Custom</span>
+            <span class="skill-chip">Síntesis de Voz & Audio (ElevenLabs)</span>
+            <span class="skill-chip">Postproducción & Color Grading</span>
+            <span class="skill-chip">Formatos 16:9 & 9:16 (Shorts/Reels)</span>
+        </div>
+    </div>
 
     <!-- PROYECTOS HORIZONTALES (16:9) -->
     <div class="section-title">Spots & Producción Audiovisual (16:9)</div>
@@ -199,7 +270,7 @@
         <div class="card">
             <div>
                 <h3>ILS Design — Calefacción & Diseño</h3>
-                <p>Propuesta audiovisual de presentación de marca para firma italiana de diseño y calefacción (2026).</p>
+                <p>Propuesta audiovisual de presentación de marca para firma italiana de diseño y calefacción. Generación de entornos sintéticos y ritmo narrativo comercial.</p>
                 <span class="tag">Commercial / AI Scene Generation</span>
             </div>
             <div class="video-container">
@@ -211,7 +282,7 @@
         <div class="card">
             <div>
                 <h3>Veleros / Cinematic AI</h3>
-                <p>Generación de escenas hiperrealistas marítimas y composición cinematográfica con IA generativa y edición narrativa.</p>
+                <p>Generación de escenas hiperrealistas marítimas y composición cinematográfica con IA generativa y edición narrativa de alta gama.</p>
                 <span class="tag">Cinematic AI / Editing</span>
             </div>
             <div class="video-container">
@@ -251,7 +322,7 @@
         <div class="card">
             <div>
                 <h3>Clipedia — Promocional Vol. 1</h3>
-                <p>Spot dinámico enfocado en captar atención en redes sociales (2026).</p>
+                <p>Spot dinámico enfocado en captar atención en redes sociales con síntesis visual acelerada.</p>
                 <span class="tag">Social Ads / Engagement</span>
             </div>
             <div class="video-container short">
@@ -263,7 +334,7 @@
         <div class="card">
             <div>
                 <h3>Clipedia — Promocional Vol. 2</h3>
-                <p>Variación creativa centrada en narrativa ágil y ritmo para audiencia joven (2026).</p>
+                <p>Variación creativa centrada en narrativa ágil y ritmo de edición para público joven.</p>
                 <span class="tag">Social Ads / AI Content</span>
             </div>
             <div class="video-container short">
